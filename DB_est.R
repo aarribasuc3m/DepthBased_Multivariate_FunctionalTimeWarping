@@ -7,7 +7,7 @@ DB_est <- function(data, smooth=TRUE, method = "MA"){
           #additional column for each new variable
   
   #obtain strictly monotone curves
-  D <- MonTrans(simdata$simdata,smooth=TRUE, method="MA") #smoothing with moving average
+  D <- MonTrans(data,smooth=TRUE, method="MA") #smoothing with moving average
   
   #Lambda estimate as the deepest curve in the monotone global sample
   L_med <- median_overall_monot(D$mon.data.nor.df,D$data.nor.df)
@@ -29,7 +29,7 @@ DB_est <- function(data, smooth=TRUE, method = "MA"){
   x_hat <- fitted_curves(comp_hat, h_hat, t, D$amp)
   
   #Registered curves
-  x_reg <- registered_curves(simdata$simdata, h_hat, t)
+  x_reg <- registered_curves(data, h_hat, t)
 
 
 return(list(D=D,L_med=L_med, L_hat=L_hat, comp = comp, h_hat_list = h_hat_list, h_hat = h_hat, 
